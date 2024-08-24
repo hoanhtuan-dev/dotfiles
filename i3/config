@@ -1,6 +1,6 @@
-exec_always xrandr --output eDP-1 --mode 1920x1080
+# exec_always xrandr --output eDP-1 --mode 1920x1080
 ########## Startup
-exec_always --no-startup-id autotiling
+# exec_always --no-startup-id autotiling
 exec --no-startup-id feh --bg-fill ~/Pictures/HinhNen/hinh-nen-00.jpg
 exec --no-startup-id picom 
 exec --no-startup-id copyq
@@ -49,15 +49,15 @@ set $up    k
 set $right l
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
 bindsym $mod+Shift+$right move right
 
 # split in horizontal orientation
@@ -88,28 +88,22 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Ctrl+$left resize shrink width 16px
-bindsym $mod+Ctrl+$down resize grow height  16px
-bindsym $mod+Ctrl+$up resize shrink height  16px
-bindsym $mod+Ctrl+$right resize grow width  16px
+bindsym $mod+Ctrl+$left  resize shrink width   16px
+bindsym $mod+Ctrl+$down  resize grow height    16px
+bindsym $mod+Ctrl+$up    resize shrink height  16px
+bindsym $mod+Ctrl+$right resize grow width     16px
 
 # ---- Border & Gaps ---- #
 for_window [class=".*"] border pixel 4
 gaps inner 10
 gaps outer 6
-# smart_gaps on
-# smart_borders on
-# smart_borders no_gaps
-# hide_edge_borders both
 
 ########## Colors
 set $colo1  #98971a 
-# set $colo1  #a50090 
 set $colo2  #458588 
 set $colo3  #b16286 
 set $colo4  #d79921 
@@ -131,13 +125,10 @@ bar {
   workspace_min_width 32
   separator_symbol "┆"
   tray_output none
-  # hidden_state hide
   padding 4 16 4
   tray_padding 4
-  # modifier Mod1
   position top
   height 32
-  # mode hide
 
   colors {
       background $colo7

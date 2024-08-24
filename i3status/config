@@ -9,12 +9,13 @@ general {
 
 # order += "ipv6"
 order += "volume master"
-order += "wireless wlan0"
+# order += "wireless wlan0"
 # order += "ethernet _first_"
 # order += "battery all"
 order += "battery 0"
 # order += "disk /"
 order += "load"
+order +="cpu_temperature 0"
 order += "memory"
 order += "tztime date"
 order += "tztime clock"
@@ -68,6 +69,10 @@ disk "/" {
 
 load {
         format = "  CPU: %1min "
+}
+
+cpu_temperature 0 {
+        format = "  %degrees°C "
 }
 
 memory {
