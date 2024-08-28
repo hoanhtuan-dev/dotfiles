@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-## Author : Aditya Shakya (adi1090x)
-## Github : @adi1090x
-#
-## Rofi   : Power Menu
-#
-## Available Styles
-#
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
@@ -14,17 +7,18 @@ dir="$HOME/.config/rofi/powermenu/type-1"
 theme='style-1'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
+# uptime="`uptime -p | sed -e 's/up //g'`"
+uptime="Trình quản lý đăng nhập"
 host=`hostname`
 
 # Options
-shutdown=' Shutdown'
-reboot=' Reboot'
-lock=' Lock'
-suspend=' Suspend'
-logout=' Logout'
-yes=' Yes'
-no=' No'
+shutdown=' Shutdown'
+reboot=' Reboot'
+lock=' Lock'
+suspend='⭘ Suspend'
+logout='󰍃 Logout'
+yes='  Đúng'
+no=' Không'
 
 # Rofi CMD
 rofi_cmd() {
@@ -43,7 +37,7 @@ confirm_cmd() {
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
+		-mesg 'Bạn có chắc chắn không?' \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -54,7 +48,8 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	# echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -76,6 +71,8 @@ run_cmd() {
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
+				hyprctl dispatcher exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi

@@ -13,12 +13,9 @@ export LANG=en_US.UTF-8
 # export __VK_LAYER_NV_optimus=NVIDIA_only
 # exec "$@"
 
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT4_IM_MODULE=ibus
-export CLUTTER_IM_MODULE=ibus
-ibus-daemon -drx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -61,11 +58,16 @@ alias ls="eza --icons"
 alias nxc="sudo hx /etc/nixos/configuration.nix"
 alias hmc="cd ~/.config/home-manager && hx ."
 alias qtlc="cd ~/.dotfiles/qtile && hx ."
-alias pcmc="cd ~/.dotfiles/picom && hx ."
+alias qtlc="cd ~/.dotfiles/qtile && hx ."
+alias hyrc="cd ~/.dotfiles/hypr && hx ."
 alias wmic="cd ~/.dotfiles/i3/ && hx ."
+alias wmsc="cd ~/.dotfiles/sway/ && hx ."
+alias wbc="cd ~/.dotfiles/waybar/ && hx ."
 alias dich-en="trans -shell -b vi:en"
 alias dich="trans -shell -b :vi"
 alias chat="gemini"
+
+alias fm="yazi"
 
 # Màn hình chào mừng
 echo ''

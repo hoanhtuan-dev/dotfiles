@@ -7,15 +7,16 @@ exec --no-startup-id copyq
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id ibus-daemon
+# exec --no-startup-id ibus-daemon
 
 ########## Global
 font pango:MesloLGM Nerd Font 10
 
-set $mod       Mod4
-set $myTerm    wezterm
-set $myBrowser qutebrowser
-set $myFm      wezterm start -e yazi
+set $mod         Mod4
+set $myTerm      tilix
+set $myBrowser   qutebrowser
+set $myBrowser2  chromium
+set $myFm        yazi
 
 ########## Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -24,6 +25,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && $refresh_i3status
+
 floating_modifier $mod
 
 tiling_drag modifier titlebar
@@ -31,6 +35,7 @@ tiling_drag modifier titlebar
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec $myTerm
 bindsym $mod+o exec $myBrowser
+bindsym $mod+b exec $myBrowser2
 bindsym $mod+a exec $myFm
 
 # kill focused window
@@ -86,6 +91,12 @@ bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -114,6 +125,25 @@ set $colo8  #ebdbb2
 set $colo9  #504945 
 set $colo10 #7c6f64 
 
+# stylix.base16Scheme = {
+#   base00 = "282828";
+#   base01 = "3c3836";
+#   base02 = "504945";
+#   base03 = "665c54";
+#   base04 = "bdae93";
+#   base05 = "d5c4a1";
+#   base06 = "ebdbb2";
+#   base07 = "fbf1c7";
+#   base08 = "fb4934";
+#   base09 = "fe8019";
+#   base0A = "fabd2f";
+#   base0B = "b8bb26";
+#   base0C = "8ec07c";
+#   base0D = "83a598";
+#   base0E = "d3869b";
+#   base0F = "d65d0e";
+# };
+
 # Color settings          Bg       Bd       Bg       Bd  
 client.focused            $colo7   $colo1   $colo7   $colo1
 client.focused_inactive   $colo7   $colo7   $colo7   $colo7
@@ -124,9 +154,9 @@ bar {
   status_command i3status --transparency
   workspace_min_width 32
   separator_symbol "┆"
-  tray_output none
+  # tray_output none
   padding 4 16 4
-  tray_padding 4
+  tray_padding 6
   position top
   height 32
 

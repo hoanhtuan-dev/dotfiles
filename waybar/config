@@ -1,0 +1,95 @@
+{
+	"layer": "top",
+	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
+	"margin-bottom": -10,
+	"margin-top": 10,
+	"modules-left": ["custom/launcher", "cpu","memory", "network","custom/spotify", "tray"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["backlight","pulseaudio","clock", "battery", "custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": " {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "",
+		"format-ethernet": "",
+		"tooltip-format": "{essid} ({signalStrength}%)",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+		"on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5",
+		// "on-click": "bash ~/.config/rofi/applets/bin/brightness.sh"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+        // "on-click": "",
+        // "on-click-right": "killall"
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}",
+        "format": " {:%H:%M}"
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": "wezterm start -e btop"
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": "wezterm start -e btop"
+    },
+    "custom/spotify": {
+    	"interval": 1,
+	"return-type": "json",
+	"exec": "~/.config/waybar/scripts/spotify.sh",
+	"exec-if": "pgrep spotify",
+	"escape": true
+
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "bash ~/.config/rofi/launchers/type-1/launcher.sh",
+        "on-click-right": "killall rofi"
+    },
+    "custom/power":{
+        "format": " ",
+        "on-click": "bash ~/.config/rofi/powermenu/type-2/powermenu.sh"
+    },
+    "hyrpland/workspaces": {
+    	"format": "{icon}",
+	"on-scroll-up": "hyprctl dispatch workspace e+1",
+	"on-scroll-down": "hyprctl dispatch workspace e-1",
+	"on-click": "activate"
+	}
+}

@@ -4,9 +4,17 @@ local wezterm = require 'wezterm'
 -- local config = wezterm.config_builder()
 if wezterm.config_builder then config = wezterm.config_builder() end
 
+if os.getenv("XDG_CURRENT_DESKTOP") == "Hyprland" then
+	config.enable_wayland = false
+else
+	config.enable_wayland = true
+end
+
+config.front_end = 'WebGpu'
+
 config.color_scheme = 'Gruvbox dark, soft (base16)'
 
-config.font = wezterm.font('JetBrains Mono', { weight = "Regular" })
+-- config.font = wezterm.font('MesloLGM Nerd Font', { weight = "Regular" })
 config.font_size = 18
 
 config.enable_tab_bar = false

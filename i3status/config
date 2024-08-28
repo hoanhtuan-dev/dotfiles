@@ -55,10 +55,10 @@ ethernet _first_ {
 battery 0 {
         format = "%status %percentage %remaining %emptytime"
         format_down = "No battery"
-        status_chr = "⚡ CHR"
-        status_bat = "🔋 BAT"
-        status_unk = "? UNK"
-        status_full = "☻ FULL"
+        status_chr = "⚡ SAC"
+        status_bat = "🔋 PIN"
+        status_unk = "? UiZa"
+        status_full = "☻ DAY"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 }
@@ -84,6 +84,7 @@ memory {
 tztime date {
         format = "  %a %d-%m-%Y "
 }
+
 tztime clock {
         format = "   %H:%M"
 }

@@ -56,3 +56,16 @@ h
 son tung mtp
 /son tung mtp
 4
+/tổng hợp 20 bài nhạc phim cổ trang trung quốc hay nhất
+5
+show
+control h
+h
+help config
+set show_mplayer_keys true
+show_player_keys: true
+/tổng hợp 20 bài nhạc phim cổ trang trung quốc hay nhất
+4
+/nhạc phim tam sinh tam thế
+/tat dinh dinh
+n

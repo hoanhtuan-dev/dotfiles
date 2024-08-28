@@ -9,7 +9,7 @@
   "ENCODER": 0,
   "NOTIFIER": "",
   "CHECKUPDATE": true,
-  "SHOW_PLAYER_KEYS": false,
+  "SHOW_PLAYER_KEYS": true,
   "FULLSCREEN": false,
   "SHOW_STATUS": true,
   "ALWAYS_REPEAT": false,

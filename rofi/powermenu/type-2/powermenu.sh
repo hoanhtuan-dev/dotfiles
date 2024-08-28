@@ -12,26 +12,27 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-2"
-theme='style-1'
+theme='style-1_01'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
+# uptime="`uptime -p | sed -e 's/up //g'`"
+uptime="Trình quản lý đăng nhập"
 host=`hostname`
 
 # Options
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+shutdown=' '
+reboot=''
+lock=' '
+suspend='⭘ '
+logout='󰍃'
+yes=' '
+no=''
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "Uptime: $uptime" \
-		-mesg "Uptime: $uptime" \
+		-p "$uptime" \
+		-mesg "$uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -44,7 +45,7 @@ confirm_cmd() {
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
+		-mesg 'Bạn có chắc chắn không?' \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -55,7 +56,8 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	# echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -77,6 +79,8 @@ run_cmd() {
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
+				hyprctl dispatcher exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi

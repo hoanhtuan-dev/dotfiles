@@ -1,0 +1,180 @@
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $mod2 Mod1
+
+font pango:MesloLGM Nerd Font 12
+exec --no-startup-id waybar
+exec --no-startup-id copyq
+# exec --no-startup-id fcitx5
+# exec --no-startup-id ibus-daemon
+
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# Cấu hình khi xuất xưởng
+include /etc/sway/config-vars.d/*
+
+# Đường dẫn hình nền
+set $bg1 ~/Pictures/HinhNen/hinh-nen-00.jpg
+
+# Đặt hình nền
+output * bg $bg1 fill
+
+# set $menu dmenu_path | wmenu | xargs swaymsg exec -- 
+# set $menu2 --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
+set $menu --no-startup-id "rofi -modi drun,run -show drun -theme gruvbox-dark -show-icon"
+
+# Trình mô phỏng thiết bị đầu cuối ưa thích của bạn
+set $term1 tilix
+set $term2 foot
+set $term3 xterm
+
+set $editor hx
+
+set $browser1 qutebrowser --untrusted-args
+set $browser2 chromium
+
+# File manager
+set $fm1 $term1 yazi
+set $fm2 $term1 --command ranger
+set $fm3 nemo
+
+# Start a terminal
+bindsym $mod+Return exec $term1
+bindsym $mod2+space exec $term2
+
+bindsym $mod+o exec $browser1
+# bindsym $mod+Ctrl+l exec --no-startup-id swaylock
+
+# Khoi dong fm
+bindsym $mod+t exec --no-startup-id $fm1
+
+# Start your launcher
+bindsym $mod+space exec $menu
+
+# Kill focused window
+bindsym $mod+q kill
+bindsym Ctrl+q kill
+
+# nút chuột để kéo.
+floating_modifier $mod normal
+
+# Tải lại file cấu hình
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Logout ?' -B 'Yes, exit sway' 'swaymsg exit'
+
+###### Moving around: ######
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+set $ws1 " "
+set $ws2 " "
+set $ws3 "♥ "
+set $ws4 "󰕼"
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+
+bindsym $mod+Shift+v splith
+bindsym $mod+v       splitv
+
+# Chuyển vùng chứa hiện tại giữa các kiểu bố cục khác nhau
+# bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+
+# Đặt tiêu điểm hiện tại ở chế độ toàn màn hình
+bindsym $mod+f fullscreen
+
+# Chuyển đổi tiêu điểm hiện tại giữa chế độ xếp kề và nổi
+bindsym $mod+Shift+space floating toggle
+
+# Hoán đổi tiêu điểm giữa vùng xếp kề và vùng nổi
+bindsym $mod+Tab focus mode_toggle
+
+# bindsym $mod+a focus parent
+
+# Di chuyển cửa sổ hiện đang tập trung vào bảng nháp
+bindsym $mod+Shift+minus move scratchpad
+
+# Nếu có nhiều cửa sổ Scratchpad, lệnh này sẽ duyệt qua chúng.
+bindsym $mod+minus scratchpad show
+bindsym Alt+Tab scratchpad show
+
+mode "resize" {
+    bindsym $left  resize shrink width 10px
+    bindsym $down  resize grow height 10px
+    bindsym $up    resize shrink height 10px
+    bindsym $right resize grow width 10px
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod2+Ctrl+$left  resize shrink width 16px
+bindsym $mod2+Ctrl+$down  resize grow height  16px
+bindsym $mod2+Ctrl+$up    resize shrink height  16px
+bindsym $mod2+Ctrl+$right resize grow width  16px
+
+# ---- Border ---- #
+default_floating_border none
+titlebar_border_thickness 0
+default_border pixel 3
+titlebar_padding 1
+
+gaps inner 10
+gaps outer 7
+
+smart_borders no_gaps
+# hide_edge_borders both
+smart_borders on
+smart_gaps on
+
+########## Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+
+
+########## Load Theme ##########
+include ./themes/themes/gruvbox-dark.conf
+
+#
+#
+#
+#
+#
+# ----------------------------------- #
+# ------------- END CONFIG ---------- #
+# ----------------------------------- #
+#
+#
+#
+include /etc/sway/config.d/*
+#
+#
+#

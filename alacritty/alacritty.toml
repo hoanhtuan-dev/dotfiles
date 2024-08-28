@@ -1,0 +1,21 @@
+import = [
+  "~/.config/alacritty/themes/gruvbox_dark.toml",
+  "~/.config/alacritty/keybindings.toml"
+]
+
+live_config_reload = true
+ipc_socket = true
+
+[window]
+decorations = "None"
+opacity = 0.9
+blur = true
+startup_mode = "Windowed"
+decorations_theme_variant = "Dark"
+
+[font]
+normal.family = "MesloLGM Nerd Font"
+size = 16
+
+[mouse]
+hide_when_typing = true
