@@ -61,13 +61,13 @@
         "interval": 15,
         "format": " {}%",
         "max-length": 10,
-        "on-click": "wezterm start -e btop"
+        "on-click": "kitty -T Btop btop"
     },
     "memory": {
         "interval": 30,
         "format": " {}%",
         "max-length": 10,
-        "on-click": "wezterm start -e btop"
+        "on-click": "kitty -T Btop btop"
     },
     "custom/spotify": {
     	"interval": 1,

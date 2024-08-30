@@ -16,6 +16,7 @@ export LANG=en_US.UTF-8
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
+export QT_STYLE_OVERRIDE=kvantum
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -42,11 +43,12 @@ alias rfm="ranger"
 alias brs="source ~/.bashrc"
 alias brc="$myEditor ~/.dotfiles/bashrc.sh"
 
-alias dsm="bash ~/.dotfiles/lightCtl.sh"
+alias dsm="bash ~/.dotfiles/scripts/lightCtl.sh"
 
 # su dung pulseaudio
 alias vlu="pactl set-sink-volume @DEFAULT_SINK@ +5%"
 alias vld="pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
 # Su dung light
 alias ligu="sudo light -A 10"
 alias ligd="sudo light -U 10"
@@ -57,17 +59,22 @@ alias ls="eza --icons"
 
 alias nxc="sudo hx /etc/nixos/configuration.nix"
 alias hmc="cd ~/.config/home-manager && hx ."
-alias qtlc="cd ~/.dotfiles/qtile && hx ."
-alias qtlc="cd ~/.dotfiles/qtile && hx ."
-alias hyrc="cd ~/.dotfiles/hypr && hx ."
+
+alias wmhc="cd ~/.dotfiles/hypr && hx ."
 alias wmic="cd ~/.dotfiles/i3/ && hx ."
 alias wmsc="cd ~/.dotfiles/sway/ && hx ."
 alias wbc="cd ~/.dotfiles/waybar/ && hx ."
+
 alias dich-en="trans -shell -b vi:en"
 alias dich="trans -shell -b :vi"
-alias chat="gemini"
 
 alias fm="yazi"
+
+alias chat.prompt="~/go/bin/gemini-cli prompt"
+alias chat="~/go/bin/gemini-cli chat"
+
+# Git
+alias gul="bash ~/.dotfiles/scripts/git-upload.sh"
 
 # Màn hình chào mừng
 echo ''

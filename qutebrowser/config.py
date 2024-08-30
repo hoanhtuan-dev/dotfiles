@@ -1,8 +1,10 @@
+
 # Get themes
-config.source('themes/onedark.py')
+config.source('themes/gruvbox-dark.py')
 # config.source('yankhoverurl.py')
 
 # ---- Themes ---- #
+c.colors.webpage.darkmode.policy.images = "never"
 c.colors.webpage.darkmode.enabled = True
 
 # ---- Options ---- #
@@ -11,7 +13,8 @@ c.content.javascript.enabled = True
 c.window.hide_decoration = True
 # Tabs
 c.tabs.last_close = "close"
-c.tabs.title.format = "{index}: {current_title}"
+# c.tabs.title.format = "{index}: {current_title}"
+c.tabs.title.format = "{current_title}"
 c.tabs.show = "never"
 # Status Bar
 # c.statusbar.show = "never"
@@ -25,13 +28,14 @@ c.fonts.default_size = "16pt"
 c.fonts.debug_console = "MesloLGM Nerd Font"
 
 # Default start page
+c.url.searchengines = {"DEFAULT": "https://www.google.fi/search?q={}"}
 c.url.start_pages = ["https://www.google.com"] 
 c.url.default_page = "https://www.google.com"
 
 # Hỏi trước khi tắt nếu đang download.
 c.confirm_quit = ["downloads"]
 # Mở tệp config bằng nvim.
-c.editor.command = ["termite", "-e", "nvim '{}'"]
+c.editor.command = ["kitty", "-e", "hx '{}'"]
 # Padding around text for tabs
 c.tabs.padding = {
     "left": 15,
@@ -50,8 +54,9 @@ config.bind("gi", "hint inputs")
 config.bind("yr", "hint --rapid all yank")
 config.bind("yl", "hint --rapid links yank")
 config.bind("em", "hint links spawn --detach mpv {hint-url}")
-config.bind("et", "spawn --userscript translate -t vi")
-config.bind("eg", "set-cmd-text :open www.google.com")
+# config.bind("et", "spawn --userscript translate -t vi")
+config.bind("et", "set-cmd-text :open https://translate.google.com/?hl=vi&sl=auto&tl=vi&op=websites")
+config.bind("eg", "set-cmd-text :open -t www.google.com")
 
 config.unbind("O")
 config.unbind("T")
@@ -70,9 +75,15 @@ config.unbind("ZZ")
 config.unbind("<ctrl+q>")
 config.bind("<ctrl+q>", "wq")
 
+config.unbind("g0")
+config.unbind("g$")
+# config.unbind("gJ")
+# config.unbind("gK")
+config.bind("gp", "tab-focus 1")
+config.bind("gn", "tab-focus -1")
+
 # ---- Alias ---- #
 c.aliases = {
-    "tvi": "spawn --userscript translate -t vi",
     "w": "session-save",
     "wq": "quit --save",
     "mpv": "hint links spawn --detach mpv {hint-url}",

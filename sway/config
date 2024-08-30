@@ -27,7 +27,7 @@ output * bg $bg1 fill
 set $menu --no-startup-id "rofi -modi drun,run -show drun -theme gruvbox-dark -show-icon"
 
 # Trình mô phỏng thiết bị đầu cuối ưa thích của bạn
-set $term1 tilix
+set $term1 kitty
 set $term2 foot
 set $term3 xterm
 

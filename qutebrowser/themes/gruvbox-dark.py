@@ -7,24 +7,19 @@
 # base16 colors but with variable names that 
 # reflect what the color is mainly used for
 
-bg_default = "#282828"
-bg_command = "#282828"
-bg_completion = "#282828"
-bg_lighter = "#353b45"
-bg_selection = "#3e4451"
-# "#545862"
-fg_disabled = "#565c64"
-fg_default = "#dddddd"
-# "#b6bdca"
-bg_lightest = "#c8ccd4"         # main shade lightest
-fg_error = "#e06c75"            # red
-# "#d19a66"                     # orange
-bg_hint = "#e5c07b"             # yellow
-fg_matched_text = "#98c379"     # green
-bg_passthrough_mode = "#56b6c2" # teal
-bg_insert_mode = "#61afef"      # blue
-bg_warning = "#c678dd"          # purple
-# "#be5046"                     # dark red
+bg_default          = "#282828"
+bg_command          = "#282828"
+bg_completion       = "#282828"
+bg_lighter          = "#a89984"
+bg_selection        = "#3e4451"
+fg_disabled         = "#565c64"
+fg_default          = "#ebdbb2"
+fg_error            = "#e06c75" 
+bg_hint             = "#e5c07b" 
+fg_matched_text     = "#98c379" 
+bg_passthrough_mode = "#56b6c2" 
+bg_insert_mode      = "#181818" 
+bg_warning          = "#c678dd" 
 
 ############
 # SETTINGS #
@@ -179,9 +174,6 @@ c.colors.statusbar.normal.fg = fg_matched_text
 # Background color of the statusbar.
 c.colors.statusbar.normal.bg = bg_default
 
-# Foreground color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = bg_default
-
 # Background color of the statusbar in insert mode.
 c.colors.statusbar.insert.bg = bg_insert_mode
 
@@ -272,13 +264,13 @@ c.colors.tabs.even.bg = bg_default
 c.colors.tabs.pinned.even.bg = bg_passthrough_mode
 
 # Foreground color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.fg = bg_lightest
+c.colors.tabs.pinned.even.fg = bg_lighter
 
 # Background color of pinned unselected odd tabs.
 c.colors.tabs.pinned.odd.bg = fg_matched_text
 
 # Foreground color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.fg = bg_lightest
+c.colors.tabs.pinned.odd.fg = bg_lighter
 
 # Background color of pinned selected even tabs.
 c.colors.tabs.pinned.selected.even.bg = bg_selection

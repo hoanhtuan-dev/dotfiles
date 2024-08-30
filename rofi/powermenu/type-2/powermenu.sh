@@ -20,10 +20,10 @@ uptime="Trình quản lý đăng nhập"
 host=`hostname`
 
 # Options
-shutdown=' '
+shutdown=''
 reboot=''
-lock=' '
-suspend='⭘ '
+lock=''
+suspend='󰤄'
 logout='󰍃'
 yes=' '
 no=''
@@ -56,8 +56,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	# echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
-	echo -e "$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -79,6 +78,8 @@ run_cmd() {
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
+				swaymsg exit
 			elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
 				hyprctl dispatcher exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
@@ -100,11 +101,11 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+		# if [[ -x '/usr/bin/betterlockscreen' ]]; then
+			# betterlockscreen -l
+		# elif [[ -x '/usr/bin/swaylock' ]]; then
+		swaylock
+		# fi
         ;;
     $suspend)
 		run_cmd --suspend
