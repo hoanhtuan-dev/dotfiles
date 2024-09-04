@@ -20,27 +20,35 @@
     "bold": true
   },
   "h1": {
-    "prefix": " ",
+    "prefix": " # ",
     "suffix": " ",
-    "color": "#ffffff",
-    "background_color": "#98971a",
+    "color": "#fbf1c7",
+    "background_color": "#689d6a",
     "bold": true
   },
   "h2": {
-    "color": "#98971a",
-    "prefix": "## "
+    "prefix": " ## ",
+    "suffix": " ",
+    "color": "#fbf1c7",
+    "background_color": "#b16286",
+    "bold": true
   },
   "h3": {
-    "color": "#98971a",
-    "prefix": "### "
+    "prefix": " ### ",
+    "suffix": " ",
+    "color": "#fbf1c7",
+    "background_color": "#458588",
+    "bold": true
   },
   "h4": {
     "color": "#98971a",
-    "prefix": "#### "
+    "prefix": "#### ",
+    "bold": false
   },
   "h5": {
     "color": "#98971a",
-    "prefix": "##### "
+    "prefix": "##### ",
+    "bold": false
   },
   "h6": {
     "prefix": "###### ",

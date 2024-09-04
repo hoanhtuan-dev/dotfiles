@@ -1,7 +1,3 @@
-[language-server.rubocop]
-command = "bundle"
-args = ["exec", "rubocop", "--lsp"]
-
 [language-server.stylelint]
 command = "stylelint-lsp"
 args = ["--stdio"]
@@ -75,4 +71,9 @@ formatter = { command = 'bash', args = ["-c", "npx stylelint --fix 2>&1 | pretti
 name = "vue"
 formatter = { command = 'prettier', args = ["--parser", "vue"] }
 auto-format = true
+
+# [[language]]
+# name = "markdown"
+# language-server = { command = "~/.cargo/bin" }
+# config = { markdown.preview.auto = true, markdown.preview.browser = "qutebrowser" }
 

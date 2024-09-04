@@ -19,41 +19,43 @@ C-r = ":config-reload"
 C-o = ":config-open"
 
 # Cụôn trang lên xuông
-C-j = ["move_line_down", "scroll_down"]
-C-k = ["move_line_up", "scroll_up"]
+# C-j = ["move_line_down", "scroll_down"]
+# C-k = ["move_line_up", "scroll_up"]
 
 esc = ["collapse_selection", "keep_primary_selection"]
 
-[keys.insert]
-j = { j = ["normal_mode", "keep_primary_selection"] }
-
 [keys.normal.space]
-"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "global_search"]
-"<" = "file_picker_in_current_buffer_directory"
 w = ":w"
 q = ":q"
 x = ":bc"
 
 [keys.normal.space."space"]
 b = ":set-language bash"
-s = ":set-language sway"
 c = ":bc"
+o = ":set-language org"
+s = ":set-language sway"
+
+[keys.insert]
+j = { j = ["normal_mode", "keep_primary_selection"] }
 
 [editor.statusline]
 left = ["mode", "separator", "spinner", "file-name"]
 # center = ["file-name"]
-right = ["diagnostics", "separator", "selections", "position", "file-encoding", "file-line-ending", "separator", "file-type"]
-separator = "│"
+right = ["diagnostics", "separator", "position", "file-encoding", "file-line-ending", "separator", "file-type"]
+separator = "┊"
+mode.normal = " 󰰓 "
+mode.insert = " 󰰄 "
+mode.select = " 󰰢 "
 
 [editor.indent-guides]
 render = true
-character = "╎"
+character = "┊"
  # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
-[editor.soft-wrap]
-enable = true
-max-wrap = 25 # increase value to reduce forced mid-word wrapping
-max-indent-retain = 0
-wrap-indicator = ""  # set wrap-indicator to "" to hide it
+# [editor.soft-wrap]
+# enable = true
+# max-wrap = 25 # increase value to reduce forced mid-word wrapping
+# max-indent-retain = 0
+# wrap-indicator = ""  # set wrap-indicator to "" to hide it
 

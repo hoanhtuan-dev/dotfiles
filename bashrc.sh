@@ -30,8 +30,14 @@ export PATH=$PATH:~/.config/composer/vendor/bin
 export PATH=$PATH:"$HOME/.local/bin"
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:"$HOME/.local/bin"
+export PATH=$PATH:"$HOME/.config/helix/runtime"
+export PATH=$PATH:"$HOME/.cargo/bin"
 
-export cfg="~/.config"
+export qutebrowser=$PATH:"$HOME/.dotfiles/scripts/open_url_in_instance.sh"
+
+export HYPRSHOT_DIR="~/Pictures/chupManHinh"
+
+alias cfg="cd ~/.config"
 
 myEditor="hx"
 

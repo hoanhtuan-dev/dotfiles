@@ -1,58 +1,115 @@
-{ config, pkgs, inputs, ... }:
+{pkgs, ... }:
 
 {
 
-  home = {
-    username = "anhtuan";
-    homeDirectory = "/home/anhtuan";
-    stateVersion = "24.05"; 
-    sessionVariables = { 
-        EDITOR = "hx"; 
-        VISUAL="hx";
-      };
-  };
-
-  home.packages = [
-    pkgs.python3        pkgs.nodejs           pkgs.qutebrowser
-    pkgs.chromium       pkgs.ranger           pkgs.helix
-    pkgs.unzip          pkgs.tree             pkgs.btop
-    pkgs.vim            pkgs.imv              pkgs.vlc
-    pkgs.mpv            pkgs.translate-shell  pkgs.wezterm
-    pkgs.wl-clipboard   pkgs.waybar           pkgs.gimp
-    pkgs.krita          pkgs.eza              pkgs.pulseaudio
-    pkgs.blender        pkgs.inkscape         pkgs.feh
-    pkgs.kdenlive       pkgs.flameshot        pkgs.wezterm
-    pkgs.zoxide         pkgs.picom-pijulius   pkgs.yazi
-    pkgs.colorpicker    pkgs.ffmpeg-full      pkgs.tenacity
-    pkgs.glaxnimate     pkgs.clang            pkgs.ktouch
-    pkgs.clang          pkgs.lazygit          pkgs.yewtube
-    pkgs.zig            pkgs.ripgrep          pkgs.cava
-    pkgs.bat            pkgs.go               pkgs.rofi
-    pkgs.eww            pkgs.copyq
+  imports = [
+    ./neovim.nix
   ];
+
+  home.enableNixpkgsReleaseCheck = false;
 
   programs.home-manager.enable = true;
 
-  programs.git = {
+  home = {
+    username          = "anhtuan";
+    homeDirectory     = "/home/anhtuan";
+    stateVersion      = "24.05"; 
+    sessionVariables  = { 
+        EDITOR        = "hx"; 
+        VISUAL        = "hx";
+        TERMINAL      = "kitty";
+        BROWSER       = "chromium";
+        IMAGE_EDITOR  = "gimp";
+        FILE_MANAGER  = "nemo";
+      };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
+  gtk = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    userName = "AnhTuanDev";
-    userEmail = "tuan.ho.designer@gmail.com";
-    extraConfig = {
+    theme = {
+      package = pkgs.gruvbox-gtk-theme;
+      name = "Gruvbox-GTK-Theme";
+    };
+    iconTheme = {
+      package = pkgs.gruvbox-plus-icons;
+      name = "Gruvbox-Plus-Dark";
+    };
+    font = {
+      name = "MesloLGM Nerder Font";
+      size = 11;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        export GTK_IM_MODULE=fcitx
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        export GTK_IM_MODULE=fcitx
+      '';
+    };
+
+  };
+
+  home.packages = with pkgs; [
+    bat                 blender               btop
+    cava                chromium              clang
+    clang               colorpicker           yt-dlp
+    copyq               eza                   feh
+    glaxnimate          glow                  go
+    hyprpicker          imv                   smile
+    inkscape            kdenlive              kitty
+    krita               tuxtype               lazygit
+    mako                mpv                   neofetch
+    nodejs              wl-clipboard          pulseaudio
+    python3             qutebrowser           klavaro
+    ripgrep             rofi                  swaybg
+    swaylock            tenacity              translate-shell
+    tree                unzip                 vim
+    vlc                 waybar                yazi
+    yewtube             zig                   godot_4
+    zoxide              hyprpicker            hyprshot
+    ffmpeg-full         foot                  wayfarer    
+    gimp                cargo                 marktext
+
+    libsForQt5.qtstyleplugin-kvantum
+    nemo-with-extensions
+
+  ];
+
+  programs.git           = {
+    enable               = true;
+    package              = pkgs.gitAndTools.gitFull;
+    userName             = "AnhTuanDev";
+    userEmail            = "tuan.ho.designer@gmail.com";
+
+    extraConfig          = {
       init.defaultBranch = "main";
     };
   };
 
-  programs.fzf = { enable = true; };
+  programs.fzf           = { enable = true; };
 
-  programs.bash = {
-    enable = true;
-    initExtra = ''
+  programs.bash          = {
+    enable               = true;
+    initExtra            = ''
       source "$(fzf-share)/completion.bash";
       source "$(fzf-share)/key-bindings.bash";
     '';
-    shellAliases = {};
-    bashrcExtra = ''
+    # shellAliases         = {};
+    bashrcExtra          = ''
       source ~/.dotfiles/bashrc.sh
     '';
   };

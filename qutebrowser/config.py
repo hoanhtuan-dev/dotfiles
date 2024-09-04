@@ -9,6 +9,8 @@ c.colors.webpage.darkmode.enabled = True
 
 # ---- Options ---- #
 c.content.javascript.enabled = True
+c.content.javascript.clipboard = "access"
+
 # Window
 c.window.hide_decoration = True
 # Tabs
@@ -35,7 +37,7 @@ c.url.default_page = "https://www.google.com"
 # Hỏi trước khi tắt nếu đang download.
 c.confirm_quit = ["downloads"]
 # Mở tệp config bằng nvim.
-c.editor.command = ["kitty", "-e", "hx '{}'"]
+c.editor.command = ["kitty", "-T qutePopup", "hx", "{}"]
 # Padding around text for tabs
 c.tabs.padding = {
     "left": 15,
@@ -55,8 +57,8 @@ config.bind("yr", "hint --rapid all yank")
 config.bind("yl", "hint --rapid links yank")
 config.bind("em", "hint links spawn --detach mpv {hint-url}")
 # config.bind("et", "spawn --userscript translate -t vi")
-config.bind("et", "set-cmd-text :open https://translate.google.com/?hl=vi&sl=auto&tl=vi&op=websites")
-config.bind("eg", "set-cmd-text :open -t www.google.com")
+# config.bind("et", "set-cmd-text :open https://translate.google.com/?hl=vi&sl=auto&tl=vi&op=websites")
+config.bind('et','open -t https://translate.google.com/#auto/vi/{primary}')
 
 config.unbind("O")
 config.unbind("T")
@@ -84,6 +86,7 @@ config.bind("gn", "tab-focus -1")
 
 # ---- Alias ---- #
 c.aliases = {
+    "o": "open",
     "w": "session-save",
     "wq": "quit --save",
     "mpv": "hint links spawn --detach mpv {hint-url}",

@@ -3,16 +3,16 @@
 	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
 	"margin-bottom": -10,
 	"margin-top": 10,
-	"modules-left": ["custom/launcher", "cpu","memory", "network","custom/spotify", "tray"],
+	"modules-left": ["custom/launcher", "cpu", "memory", "network", "custom/spotify", "tray", "hyprland/window" ],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["backlight","pulseaudio","clock", "battery", "custom/power"],
+	"modules-right": ["backlight", "pulseaudio", "battery", "clock", "custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 5,
 		"format": "{icon} {volume}%",
 		"format-muted": " {volume}%",
-		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"format-icons": {
 			"default": ["", "", ""]
 		}
@@ -77,6 +77,10 @@
 	"escape": true
 
     },
+    "hyprland/window": {
+	    "format": "{}",
+	    "separate-outputs": true
+	},
     "custom/launcher":{
         "format": " ",
         "on-click": "bash ~/.config/rofi/launchers/type-1/launcher.sh",
@@ -88,8 +92,8 @@
     },
     "hyrpland/workspaces": {
     	"format": "{icon}",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"on-click": "activate"
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"on-click": "activate"
 	}
 }
